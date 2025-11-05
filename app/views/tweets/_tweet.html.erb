@@ -1,0 +1,13 @@
+<%= turbo_stream_from tweet %>
+  <div class='card mb-2' id="<%= dom_id(tweet) %>">
+    <div class='card-body'>
+      <h5 class='card-title text-muted'>
+        <small class='float-right'>Posted at <%= tweet.created_at %></small>
+        <%= tweet.username %>
+      </h5>
+      <div class='card-text lead mb-2'>
+        <%= tweet.body %>
+      </div>
+    </div>
+  </div>
+

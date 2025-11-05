@@ -1,0 +1,8 @@
+<div class='container'>
+  <h1>Tweeter</h1>
+  <h4>A Rails, Hotwire learning practice to use the `broadcasts_refreshes` functionality</h4>
+
+  <%= render 'form' %>
+  <%= turbo_stream_from 'tweets' %>
+  <%= render @tweets %>
+</div>
