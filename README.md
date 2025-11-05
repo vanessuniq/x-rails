@@ -1,24 +1,13 @@
-# README
+# Mini Tweet Clone
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is a mini project using Rails 8 and Turbo 8. It is a practice of how to use the `broadcasts_refreshes`, a Turbo-Rails model helper that automatically triggers a Turbo Stream `refresh` broadcast whenever a record changes.
 
-Things you may want to cover:
+## Example Use
 
-* Ruby version
+```ruby
+class Tweet < ApplicationRecord
+  broadcasts_refreshes
+end
+```
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Any client subscribed with `turbo_stream_from @tweets` or `turbo_stream_from @tweet` will automatically get updated HTML when a message changes.
