@@ -7,7 +7,7 @@ class TweetsController < ApplicationController
   def create
     @tweet = Tweet.new(tweet_params)
     if @tweet.save
-      redirect_to posts_path
+      redirect_to tweets_path
     else
       render :index
     end
