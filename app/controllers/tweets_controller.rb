@@ -10,7 +10,7 @@ class TweetsController < ApplicationController
     if @tweet.save
       redirect_to tweets_path
     else
-      render :index, alert: 'Unable to post your tweet'
+      render :index, alert: "Unable to post your tweet"
     end
   end
 
@@ -29,7 +29,7 @@ class TweetsController < ApplicationController
   def destroy
     @tweet.destroy
 
-    redirect_to tweets_path, notice: 'Tweet successfully deleted!'
+    redirect_to tweets_path, notice: "Tweet successfully deleted!"
   end
 
   private
@@ -41,7 +41,7 @@ class TweetsController < ApplicationController
   def find_tweet
     @tweet = Tweet.find_by(id: params[:tweet_id] || params[:id])
     if !@tweet
-      redirect_to tweets_path, alert: 'Cannot process action: Tweet not found.'
+      redirect_to tweets_path, alert: "Cannot process action: Tweet not found."
     end
   end
 end
