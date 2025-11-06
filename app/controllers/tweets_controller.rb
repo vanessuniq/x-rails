@@ -1,7 +1,7 @@
 class TweetsController < ApplicationController
-  before_action :find_tweet, only: %i[ like retweet]
+  before_action :find_tweet, only: %i[ like retweet destroy]
   def index
-    @tweets = Tweet.all.order(created_at: :desc)
+    @tweets = Tweet.order(created_at: :desc)
     @tweet = Tweet.new
   end
 
@@ -10,7 +10,7 @@ class TweetsController < ApplicationController
     if @tweet.save
       redirect_to tweets_path
     else
-      render :index
+      render :index, alert: 'Unable to post your tweet'
     end
   end
 
@@ -26,6 +26,12 @@ class TweetsController < ApplicationController
     redirect_to tweets_path
   end
 
+  def destroy
+    @tweet.destroy
+
+    redirect_to tweets_path, notice: 'Tweet successfully deleted!'
+  end
+
   private
 
   def tweet_params
@@ -33,7 +39,7 @@ class TweetsController < ApplicationController
   end
 
   def find_tweet
-    @tweet = Tweet.find_by(id: params[:tweet_id])
+    @tweet = Tweet.find_by(id: params[:tweet_id] || params[:id])
     if !@tweet
       redirect_to tweets_path, alert: 'Cannot process action: Tweet not found.'
     end
