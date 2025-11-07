@@ -39,7 +39,7 @@ class TweetsController < ApplicationController
   end
 
   def find_tweet
-    @tweet = Tweet.find_by(id: params[:tweet_id] || params[:id])
+    @tweet = Tweet.find_by(id: params[:id])
     if !@tweet
       redirect_to tweets_path, alert: "Cannot process action: Tweet not found."
     end

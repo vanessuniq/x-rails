@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   resources :tweets, only: %i[ index create destroy] do
-    post "like"
-    post "retweet"
+    post :like, on: :member
+    post :retweet, on: :member
   end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
